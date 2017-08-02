@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fkhadra/react-contexify.git"
+    "url": "git+git@github.com:balazsbajorics/react-contexify.git"
   },
   "author": "Fadi Khadra <fdkhadra@gmail.com> (https://github.com/fkhadra)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fkhadra/react-contexify/issues"
+    "url": "https://github.com/balazsbajorics/react-contexify/issues"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.0",
@@ -56,6 +56,7 @@
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
+    "sass": "^1.0.0-beta.2",
     "webpack": "^2.4.1"
   },
   "peerDependencies": {

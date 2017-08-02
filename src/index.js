@@ -4,3 +4,4 @@ export { default as ContextMenuProvider } from './Component/ContextMenuProvider'
 export { default as menuProvider } from './menuProvider';
 export { default as IconFont } from './Component/IconFont';
 export { default as ContextMenu } from './Component/ContextMenu';
+export { default as eventManager } from './util/eventManager';
