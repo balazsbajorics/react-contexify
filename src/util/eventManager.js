@@ -1,33 +1,20 @@
-
-/* eslint no-unused-expressions: ["error", { "allowShortCircuit": true }] */
-
 const eventManager = {
   eventList: new Map(),
-
   on(event, callback) {
-    this.eventList.has(event) || this.eventList.set(event, []);
+    this.eventList.has(event) || this.eventList.set(event, new Set());
+    this.eventList.get(event).add(callback);
 
-    this.eventList.get(event).push({
-      callback
-    });
-
-    return this;
+    return () => this.eventList.get(event).delete(callback);
   },
-
-  off(event) {
-    return this.eventList.delete(event);
-  },
-
   emit(event, ...args) {
     if (!this.eventList.has(event)) {
-      console.warn(`<${event}> Event is not registered. Did you forgot to bind the event ?`);
+      console.warn(
+        `<${event}> Event is not registered. Did you forgot to bind the event ?`
+      );
       return false;
     }
-    this.eventList
-      .get(event)
-      .forEach(
-        listener => listener.callback.call(this, ...args)
-      );
+    this.eventList.get(event).forEach(cb => cb.call(this, ...args));
+
     return true;
   }
 };
