@@ -19,7 +19,7 @@ type ItemCallback = {
    * Data passed to the context menu provider
    */
   dataFromProvider: any;
-};
+}
 
 interface IStyle {
   /**
@@ -202,39 +202,39 @@ interface Ianimation {
 /**
  * Wrap a component to give them the ability to display the context menu
  */
-export class ContextMenuProvider extends React.Component<IContextMenuProvider> {};
+export class ContextMenuProvider extends React.Component<IContextMenuProvider> {}
 
 /**
  * Context menu container
  */
-export class ContextMenu extends React.Component<IContextMenu> {};
+export class ContextMenu extends React.Component<IContextMenu> {}
 
 /**
  * Helper to display icon. Work with classname and without like material icon
  */
-export class IconFont extends React.Component<IIconFont> {};
+export class IconFont extends React.Component<IIconFont> {}
 
 /**
  * Context menu Item
  */
-export class Item extends React.Component<IItem> {};
+export class Item extends React.Component<IItem> {}
 
 /**
  * Context menu item separator
  */
-export class Separator extends React.Component<> {};
+export class Separator extends React.Component<{}> {}
 
 /**
  * Submenu container
  */
-export class Submenu extends React.Component<ISubmenu> {};
+export class Submenu extends React.Component<ISubmenu> {}
 
 /**
  * Helper to define the theme
  */
-export let theme: Itheme;
+export let theme: Itheme
 
 /**
  * Helper to define the animation
  */
-export let animation: Ianimation;
+export let animation: Ianimation
