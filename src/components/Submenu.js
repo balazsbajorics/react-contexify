@@ -37,27 +37,32 @@ export default class Submenu extends Component {
     }
   };
 
-  setRef = ref => {
+  setMenuRef = ref => {
     this.menu = ref;
+  };
+
+  setRef = ref => {
+    this.ref = ref;
   };
 
   componentDidMount() {
     const { innerWidth, innerHeight } = window;
-    const rect = this.menu.getBoundingClientRect();
+    const menuRect = this.menu.getBoundingClientRect();
+    const itemRect = this.ref.getBoundingClientRect();
     const style = {};
 
-    if(rect.right < innerWidth) {
+    if(menuRect.right < innerWidth) {
       style.left = '100%';
     } else {
       style.right = '100%';
     }
 
-    if (rect.bottom > innerHeight) {
+    if ((itemRect.top + menuRect.height) > innerHeight) {
       style.bottom = 0;
       style.top = 'initial';
     } else {
       style.bottom = 'initial';
-      style.top = 0;
+      style.top = itemRect.top - menuRect.top;
     }
 
     this.setState({
@@ -112,13 +117,17 @@ export default class Submenu extends Component {
         className={cssClasses}
         role="presentation"
       >
-        <div className={styles.itemContent} onClick={this.handleClick}>
+        <div
+          className={styles.itemContent}
+          onClick={this.handleClick}
+          ref={this.setRef}
+        >
           {label}
           <span className={styles.submenuArrow}>{arrow}</span>
         </div>
         <div
           className={styles.submenu}
-          ref={this.setRef}
+          ref={this.setMenuRef}
           style={submenuStyle}
         >
           {this.getMenuItem()}

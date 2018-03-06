@@ -16,7 +16,7 @@ describe('Submenu', () => {
   it('Should not go offscreen', () => {
     global.innerWidth = 100;
     global.innerHeight = 100;
-    Element.prototype.getBoundingClientRect = () => ({ right: 200, bottom: 200 });
+    Element.prototype.getBoundingClientRect = () => ({ bottom: 200, height: 200, left: 0, right: 200, top: 0, width: 0 });
     const component = mount(<Submenu label="bar"><Children /></Submenu>);
 
     expect(toJson(component)).toMatchSnapshot();
