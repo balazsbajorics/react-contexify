@@ -23,6 +23,8 @@ class ContextMenu extends Component {
     animation: null
   };
 
+  windowEventsBound = false;
+
   state = {
     x: 0,
     y: 0,
@@ -46,19 +48,25 @@ class ContextMenu extends Component {
   }
 
   bindWindowEvent = () => {
-    window.addEventListener('resize', this.hide);
-    window.addEventListener('contextmenu', this.hide);
-    window.addEventListener('mousedown', this.hide);
-    window.addEventListener('click', this.hide);
-    window.addEventListener('scroll', this.hide);
+    if (!this.windowEventsBound) {
+      window.addEventListener('resize', this.hide);
+      window.addEventListener('contextmenu', this.hide);
+      window.addEventListener('mousedown', this.hide);
+      window.addEventListener('click', this.hide);
+      window.addEventListener('scroll', this.hide);
+      this.windowEventsBound = true;
+    }
   };
 
   unBindWindowEvent = () => {
-    window.removeEventListener('resize', this.hide);
-    window.removeEventListener('contextmenu', this.hide);
-    window.removeEventListener('mousedown', this.hide);
-    window.removeEventListener('click', this.hide);
-    window.removeEventListener('scroll', this.hide);
+    if (this.windowEventsBound) {
+      window.removeEventListener('resize', this.hide);
+      window.removeEventListener('contextmenu', this.hide);
+      window.removeEventListener('mousedown', this.hide);
+      window.removeEventListener('click', this.hide);
+      window.removeEventListener('scroll', this.hide);
+      this.windowEventsBound = false;
+    }
   };
 
   onMouseEnter = () => window.removeEventListener('mousedown', this.hide);
@@ -75,7 +83,9 @@ class ContextMenu extends Component {
         return;
       }
       this.unBindWindowEvent();
-      this.setState({ visible: false });
+      if (this.state.visible) {
+        this.setState({ visible: false });
+      }
   };
 
   setRef = ref => {

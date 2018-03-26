@@ -36,6 +36,7 @@
     "url": "https://github.com/balazsbajorics/react-contexify/issues"
   },
   "devDependencies": {
+    "@types/react": "^16.0.41",
     "autoprefixer": "^7.2.5",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.1",
